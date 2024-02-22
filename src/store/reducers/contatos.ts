@@ -6,17 +6,20 @@ type ContatosState = {
     itens: Contato[]
 }
 
+
+
 const initialState: ContatosState = {
     itens: [
         {
             id: 1,
             nome: 'Aquiles',
-            favoritos: enums.ListaFavorito.FAVORITO,
-            telefone: +551195914703,
+            favoritos: enums.ListaFavorito.NORMAL,
+            telefone: '551195914703',
             email: 'aquilesnetto2002@gmail.com'
         }
     ]
 }
+
 
 const contatosSlice = createSlice({
     name: 'contatos',
@@ -47,7 +50,7 @@ const contatosSlice = createSlice({
             if(contatoJaExiste){
                 alert ('Já existe um contato com este número de telefone')
             } else {
-                const ultimoContato  = state.itens[state.itens.lenght -1]
+                const ultimoContato  = state.itens[state.itens.length -1]
 
                 const contatoNovo = {
                     ...action.payload,
@@ -60,15 +63,16 @@ const contatosSlice = createSlice({
 
         alteraFav: (
             state,
-            action: PayloadAction<{id:number; favorito: boolean}>
+            action: PayloadAction<{id:number }>
         ) => {
             const indexDoContato = state.itens.findIndex(
                 (c) => c.id === action.payload.id
             )
 
             if (indexDoContato >= 0) {
-                state.itens[indexDoContato].favoritos = action.payload.favorito
-                ? enums.ListaFavorito.FAVORITO : ''
+                state.itens[indexDoContato].favoritos = action.payload
+                ? enums.ListaFavorito.NORMAL 
+                : enums.ListaFavorito.FAVORITO
             }
         }
 

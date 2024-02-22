@@ -1,10 +1,11 @@
 import BotaoAdicionar from '../../components/BotaoAdicionar'
-import ListaDeTarefas from '../../containers/ListaDeContatos'
+import ListaDeContatos from '../../containers/ListaDeContatos'
+
 
 const Home = () => (
   <>
-    <ListaDeContatos />
-    <BotaoAdicionar />
+  <ListaDeContatos />
+  <BotaoAdicionar>
   </>
 )
 
