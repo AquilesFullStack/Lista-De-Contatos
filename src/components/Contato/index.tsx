@@ -49,7 +49,7 @@ const Contato = ({
         setTelefone(telefoneOriginal.toString())
     }
 
-    function alteraFavoritos(evento: ChangeEvent<HTMLInputElement>){
+    function alteraFavoritos(evento: ChangeEvent<HTMLInputElement>) {
         dispatch(
             alteraFav({
                 id

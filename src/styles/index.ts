@@ -31,14 +31,14 @@ export const Titulo = styled.h2`
 `
 
 export const Campo = styled.input`
-    Display: block;
+    Display: inline;
     padding: 8px;
     backgroud-color: ${variaveis.gray};
     border-radius: 8px;
     font-weight: bold;
     color: #030202;
     border-color: #030202;
-    width: 100%;
+    width: 33%;
     margin-bottom: 8px;
 `
 
