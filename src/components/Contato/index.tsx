@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import * as S from './styles'
 
 import { remover, editar, alteraFav } from '../../store/reducers/contatos'
-import ContatoClass from '../../utils/enums/Contato'
+import ContatoClass from '../../models/Contato'
 import { Botao, BotaoSalvar } from '../../styles'
 
 import * as enums from '../../utils/enums/Contato'
@@ -25,20 +25,20 @@ const Contato = ({
     const [email, setEmail] = useState('')
 
     useEffect(() => {
-        if (nomeOriginal.lenght > 0) {
+        if (nomeOriginal.length > 0) {
             setNome(nomeOriginal)
         }
     }, [nomeOriginal]);
 
     useEffect(() => {
-        if (telefoneOriginal.lenght > 0) {
-            setNome(telefoneOriginal)
+        if (telefoneOriginal.toString().length > 0) {
+            setTelefone(telefoneOriginal.toString())
         }
     }, [telefoneOriginal]);
 
     useEffect(() => {
-        if (emailOriginal.lenght > 0) {
-            setNome(emailOriginal)
+        if (emailOriginal.length > 0) {
+            setEmail(emailOriginal)
         }
     }, [emailOriginal])
 
@@ -46,25 +46,24 @@ const Contato = ({
         setEstaEditando(false)
         setNome(nomeOriginal)
         setEmail(emailOriginal)
-        setTelefone(telefoneOriginal)
+        setTelefone(telefoneOriginal.toString())
     }
 
-    // function alteraFavoritos(evento: ChangeEvent<HTMLInputElement>){
-    //     dispatch(
-    //         alteraFav({
-    //             id,
-    //             finalizado: evento.target.checked
-    //         })
-    //     )
-    // }
+    function alteraFavoritos(evento: ChangeEvent<HTMLInputElement>){
+        dispatch(
+            alteraFav({
+                id
+            })
+        )
+    }
 
     return (
         <S.Card>
             <label htmlFor={nome}>
-                <S.Titulo
+                <S.Titulo>
                     {estaEditando && <em>Editando:</em>}
                     {nome}
-                />
+                </S.Titulo>
             </label>
             <S.Tag parametro='favoritos' favoritos={favoritos}>
                 {favoritos}
@@ -88,7 +87,7 @@ const Contato = ({
                                     editar({
                                         id,
                                         nome,
-                                        telefone,
+                                        telefone: parseInt(telefone),
                                         email,
                                         favoritos
                                     })

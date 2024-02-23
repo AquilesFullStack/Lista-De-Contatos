@@ -13,7 +13,7 @@ const EstiloGlobal = createGlobalStyle`
 
 export const Container = styled.div`
     display: grid;
-    grid-template-columns: 224px auto;
+    grid-template-columns: 400px auto;
 `
 
 export const MainContainer = styled.main`
@@ -31,26 +31,30 @@ export const Titulo = styled.h2`
 `
 
 export const Campo = styled.input`
+    Display: block;
     padding: 8px;
     backgroud-color: ${variaveis.gray};
     border-radius: 8px;
     font-weight: bold;
     color: #030202;
     border-color: #030202;
-    width: 50%;
+    width: 100%;
+    margin-bottom: 8px;
 `
 
 export const  Botao = styled.button`
-    font-wight: bold;
-    font-size: 12px;
-    color: #fff;
-    padding; 8px 12px;
-    border: none;
-    cursor: pointer:
-    background-color: ${variaveis.blue};
-    border-radious: 8px;
+font-wight: bold;
+font-size: 18px;
+color: #fff;
+padding: 8px 12px;
+border: none;
+cursor: pointer;
+background-color: ${variaveis.blue};
+border-radius: 12px;   
 `
 
 export const BotaoSalvar = styled(Botao)`
 background-color: ${variaveis.green};
 `
+
+export default EstiloGlobal

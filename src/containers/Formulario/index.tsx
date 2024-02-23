@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+
 import  { BotaoSalvar, MainContainer, Titulo } from '../../styles'
 import { Campo } from  '../../styles'
 import { Form, Opcao, Opcoes } from './styles'
@@ -14,9 +15,9 @@ const Formulario = () => {
     const navigate = useNavigate()
 
     const [nome, setNome] = useState('')
-    const [telefone, setTelefone] = useState('')
+    const [telefone, setTelefone] = useState<number>(0)
     const [email, setEmail] = useState('')
-    const [favoritos, setFavoritos] = useState('')
+    const [favoritos, setFavoritos] = useState(enums.ListaFavorito.NORMAL)
 
     const cadastraNovoContato = (event: FormEvent) => {
         event.preventDefault()
@@ -25,7 +26,8 @@ const Formulario = () => {
             cadastrar({
                 nome,
                 telefone,
-                email
+                email,
+                favoritos
             })
         )
         navigate ('/')
@@ -33,7 +35,7 @@ const Formulario = () => {
 
     return (
         <MainContainer>
-            <Titulo>Novo Contato</Titulo>
+            <Titulo>Agenda</Titulo>
             <Form onSubmit={cadastraNovoContato}>
                 <Campo
                 value={nome}
@@ -41,30 +43,32 @@ const Formulario = () => {
                 type="text"
                 placeholder= "Nome"
                 />
-                <Campo
+                <Campo 
                 value={telefone}
-                onChange={(evento) => setNome (evento.target.value)}
+                onChange={(evento) => setTelefone(parseInt(evento.target.value))}
                 type="number"
                 placeholder= "Telefone"
-                /><Campo
+                />
+                <Campo
                 value={email}
-                onChange={(evento) => setNome (evento.target.value)}
+                onChange={(evento) => setEmail (evento.target.value)}
                 type="email"
-                placeholder= "e-mail"
+                placeholder= "E-mail"
                 />
                 <Opcoes>
-                    <p>Favorito</p>
-                    {Object.values(enums.ListaFavorito).map((favoritos) => (
-                        <Opcao key={favoritos}>
+                    <p>Favoritos</p>
+                    {Object.values(enums.ListaFavorito).map((favorito) => (
+                        <Opcao key={favorito}>
                             <input
-                            value={favoritos}
-                            name= "Favoritos"
+                            value={favorito}
+                            name= "favoritos"
                             type="radio"
                             onChange={(evento) => setFavoritos(evento.target.value as enums.ListaFavorito)}
-                            id={favoritos}
-                            defaultChecked={favoritos === enums.ListaFavorito.NORMAL}
-                            />{' '}
-                            <label htmlFor={favoritos}>{favoritos}</label>
+                            id={favorito}
+                            checked={favoritos === favorito}
+                            /><span>
+                                <label htmlFor={favorito}>{favorito}</label>
+                            </span>
                         </Opcao>  
                     ))}
                 </Opcoes>

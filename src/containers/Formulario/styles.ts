@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-    max-width: 547px;
+    max-width: 840px;
     width: 100%;
     font-weight: bold;
     font-size: 14px;
@@ -16,12 +16,14 @@ export const Form = styled.form`
 export const Opcoes = styled.div`
     margin-bottom: 16px;
     
+    
     p{
+        margin-top: 16px;
         margin-bottom: 6px;
     }
 
     label{
-        margin-right: 6px;
+        margin-right: 12px;
     }
 `
 export const Opcao = styled.div`

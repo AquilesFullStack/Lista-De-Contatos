@@ -14,7 +14,7 @@ const initialState: ContatosState = {
             id: 1,
             nome: 'Aquiles',
             favoritos: enums.ListaFavorito.NORMAL,
-            telefone: '551195914703',
+            telefone: 551195914703,
             email: 'aquilesnetto2002@gmail.com'
         }
     ]

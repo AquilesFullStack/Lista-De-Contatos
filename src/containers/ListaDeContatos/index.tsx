@@ -4,12 +4,15 @@ import Contato from '../../components/Contato'
 import { MainContainer, Titulo } from '../../styles'
 
 import { RootReducer } from '../../store'
-import contatos from '../../store/reducers/contatos'
-import { Root } from 'react-dom/client'
 
-const listaDeContatos = () => {
+type Props = {
+    mostrarFiltros: boolean
+}
+
+const ListaDeContatos = () => {
     const { itens } = useSelector((state: RootReducer) => state.contatos)
     const { termo, criterio, valor } = useSelector((state: RootReducer) => state.filtro)
+    
 
     const filtraContatos = () => {
         let contatosFiltrados = itens
@@ -42,13 +45,14 @@ const listaDeContatos = () => {
         return mensagem
     }
 
-    const contatos = filtraContatos()
-    const mensagem = exibeResultatoFiltragem(contatos.length)
+    const contatosFiltrados = filtraContatos()
+    const mensagem = exibeResultatoFiltragem(contatosFiltrados.length)
 
     return (
         <MainContainer>
+            <p>{mensagem}</p>
             <ul>
-                {contatos.map((c) => (
+                {contatosFiltrados.map((c) => (
                     <li key={c.nome}>
                         <Contato
                             id={c.id}
@@ -64,4 +68,4 @@ const listaDeContatos = () => {
     )
 }
 
-export default listaDeContatos
+export default ListaDeContatos

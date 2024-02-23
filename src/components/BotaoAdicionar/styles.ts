@@ -4,7 +4,7 @@ import variaveis from '../../styles/variaveis'
 
 export const Circulo = styled(Link)`
     height: 64px;
-    widht: 64px;
+    width: 64px;
     background-color: ${variaveis.blue};
     color: #fff;
     position: fixed;
@@ -13,6 +13,6 @@ export const Circulo = styled(Link)`
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    font-size: 40px/
+    font-size: 40px;
     text-decoration: none;
 `
