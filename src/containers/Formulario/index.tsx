@@ -37,24 +37,6 @@ const Formulario = () => {
         <MainContainer>
             <Titulo>Agenda</Titulo>
             <Form onSubmit={cadastraNovoContato}>
-                <Campo
-                value={nome}
-                onChange={(evento) => setNome (evento.target.value)}
-                type="text"
-                placeholder= "Nome"
-                />
-                <Campo 
-                value={telefone}
-                onChange={(evento) => setTelefone(parseInt(evento.target.value))}
-                type="number"
-                placeholder= "Telefone"
-                />
-                <Campo
-                value={email}
-                onChange={(evento) => setEmail (evento.target.value)}
-                type="email"
-                placeholder= "E-mail"
-                />
                 <Opcoes>
                     <p>Favoritos</p>
                     {Object.values(enums.ListaFavorito).map((favorito) => (
@@ -72,6 +54,27 @@ const Formulario = () => {
                         </Opcao>  
                     ))}
                 </Opcoes>
+                <Campo
+                value={nome}
+                onChange={(evento) => setNome (evento.target.value)}
+                type="text"
+                placeholder= "Nome"
+                required
+                />
+                <Campo 
+                value={telefone}
+                onChange={(evento) => setTelefone(parseInt(evento.target.value))}
+                type="number"
+                placeholder= "Telefone"
+                required
+                />
+                <Campo
+                value={email}
+                onChange={(evento) => setEmail (evento.target.value)}
+                type="email"
+                placeholder= "E-mail"
+                required
+                />
                 <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
             </Form>
         </MainContainer>

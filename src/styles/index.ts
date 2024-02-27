@@ -1,4 +1,4 @@
-import styled,  { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import variaveis from './variaveis'
 
 const EstiloGlobal = createGlobalStyle`
@@ -11,15 +11,24 @@ const EstiloGlobal = createGlobalStyle`
     }
 `
 
-export const Container = styled.div`
-    display: grid;
-    grid-template-columns: 400px auto;
+export const DivContacts = styled.ul`
+    max-width: 1024px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    li{
+        width: 32%;
+        margin-right: 8px;
+
+    }
 `
 
 export const MainContainer = styled.main`
-    padding: 0 40px;
-    height: 100vh;
-    overflow-y: scroll;
+    max-width: 840px;
+    width: 100%;
+    margin: 0 auto; 
+    padding: 24px; 
 `
 
 export const Titulo = styled.h2`
@@ -31,18 +40,19 @@ export const Titulo = styled.h2`
 `
 
 export const Campo = styled.input`
-    Display: inline;
+    display: inline;
     padding: 8px;
-    backgroud-color: ${variaveis.gray};
+    background-color: ${variaveis.gray};
     border-radius: 8px;
     font-weight: bold;
     color: #030202;
     border-color: #030202;
-    width: 33%;
+    flex: 1 1 33%;
+    margin-right: 8px; 
     margin-bottom: 8px;
 `
 
-export const  Botao = styled.button`
+export const Botao = styled.button`
 font-wight: bold;
 font-size: 18px;
 color: #fff;
